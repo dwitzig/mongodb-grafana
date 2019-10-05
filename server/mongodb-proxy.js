@@ -130,6 +130,7 @@ app.all('/query', function(req, res, next)
     // Parse query string in target
     substitutions = { "$from" : new Date(req.body.range.from),
                       "$to" : new Date(req.body.range.to),
+                      "$baseIsoDate" : new Date(0),
                       "$dateBucketCount" : getBucketCount(req.body.range.from, req.body.range.to, req.body.intervalMs)
                      }
 
