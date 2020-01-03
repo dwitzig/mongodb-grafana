@@ -16,7 +16,7 @@ app.all('/', function(req, res, next)
   logRequest(req.body, "/")
   setCORSHeaders(res);
 
-  MongoClient.connect(req.body.db.url, function(err, client)
+  MongoClient.connect(req.body.db.url, {slaveOk:true}, function(err, client)
   {
     if ( err != null )
     {
