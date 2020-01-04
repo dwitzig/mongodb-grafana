@@ -289,7 +289,7 @@ function parseQuery(query, substitutions)
 
 function runAggregateQuery( requestId, queryId, body, queryArgs, res, next )
 {
-  MongoClient.connect(body.db.url, function(err, client) 
+  MongoClient.connect(body.db.url, {slaveOk:true}, function(err, client) 
   {
     if ( err != null )
     {
@@ -428,7 +428,7 @@ function doTemplateQuery(requestId, queryArgs, db, res, next)
     const dbName = db.db
     
     // Use connect method to connect to the server
-    MongoClient.connect(db.url, function(err, client) 
+    MongoClient.connect(db.url, {slaveOk:true}, function(err, client) 
     {
       if ( err != null )
       {
